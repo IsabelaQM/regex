@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="width=device-width, initial-scale=1.0" />
+        <title>Lista11</title>
+        <style>
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+        </style>
+        <script src="js/jMarkWiFi.js"></script>
+
+
+        
+        <script>
+            const regex = {
+                data: /^([0-2]\d|3[01])\/(0\d|1[0-2])\/(\d{2}|\d{4})$/,
+                cpf: /^\d{3}.\d{3}.\d{3}-\d{2}$/,
+                matricula: /^(IFTM|iftm)-\d{3}\/\d{3}-\w{2}$/,
+                disciplina: /^[Mm][Tt]-\d{2}.\d{3}-[Ii][Ff][Tt][Mm]$/,
+                disciplina2: /^MT-\d{2}.\d{3}-[Ii][Ff][Tt][Mm]$/,
+                disciplina3: /^[Mm]\s?[Tt]-\d{2}.\d{3}-[Ii]\s?[Ff]\s?[Tt]\s?[Mm]$/,
+                campus: /^IFTM\scampus\sUberlândia(\sCentro)?$/,
+                telefone: /^\+\d{2}\(\d{2}\)\d{5}-\d{4}$/,
+                telefone2: /^\(\d{2,3}\)\d{5}-\d{4}$/,
+                altura: /^(1[,.][3-9]\d?|2[,.]([0-4]\d?|50?))$/,
+                faturamento: /^R\$\d{1,3}(.\d{3}){0,3},\d{1,2}$/,
+                cronometro: /^([01]\d|2[0-3])(:[0-5]\d){2}:\d{2}$/,
+            }
+
+            function validar(id) {
+                const input = document.getElementById(id)
+                const valido = regex[input.id].test(input.value)
+
+                alert(valido ? "Válido" : "Inválido")
+            }
+        </script>
+    </head>
+
+    <body>
+        <form>
+            <label
+                >Data de Nascimento
+                <input id="data" type="text" value="01/01/2023" />
+                <input onclick="validar('data')" type="button" value="Validar" />
+            </label>
+            <label
+                >CPF (jMarkWiFi)
+                <input id="cpf" onkeypress="inserirMascara('cpf', 'xxx.xxx.xxx-xx')" type="text" value="111.222.333-44" />
+                <input onclick="validar('cpf')" type="button" value="Validar" />
+            </label>
+            <label
+                >Matrícula
+                <input id="matricula" type="text" value="IFTM-123/456-AB" />
+                <input onclick="validar('matricula')" type="button" value="Validar" />
+            </label>
+            <label
+                >Disciplina (jMarkWiFi)
+                <input id="disciplina" onkeypress="inserirMascara('disciplina', 'MT-xx.xxx-IFTM')" type="text" value="mT-01.123-IFTM" />
+                <input onclick="validar('disciplina')" type="button" value="Validar" />
+            </label>
+            <label
+                >Disciplina 2 (jMarkWiFi)
+                <input id="disciplina2" onkeypress="inserirMascara('disciplina2', 'MT-xx.xxx-IFTM')" type="text" value="MT-01.123-IFTM" />
+                <input onclick="validar('disciplina2')" type="button" value="Validar" />
+            </label>
+            <label
+                >Disciplina 3
+                <input id="disciplina3" type="text" value="M T-01.123-IFTM" />
+                <input onclick="validar('disciplina3')" type="button" value="Validar" />
+            </label>
+            <label
+                >Campus
+                <input id="campus" type="text" value="IFTM campus Uberlândia" />
+                <input onclick="validar('campus')" type="button" value="Validar" />
+            </label>
+            <label
+                >Telefone (jMarkWiFi)
+                <input id="telefone" onkeypress="inserirMascara('telefone', '+xx(xx)xxxxx-xxxx')" type="text" value="+55(34)98888-9888" />
+                <input onclick="validar('telefone')" type="button" value="Validar" />
+            </label>
+            <label
+                >Telefone 2
+                <input id="telefone2" type="text" value="(034)99999-9999" />
+                <input onclick="validar('telefone2')" type="button" value="Validar" />
+            </label>
+            <label
+                >Altura
+                <input id="altura" type="text" value="1,50" />
+                <input onclick="validar('altura')" type="button" value="Validar" />
+            </label>
+            <label
+                >Faturamento
+                <input id="faturamento" type="text" value="R$1.000,00" />
+                <input onclick="validar('faturamento')" type="button" value="Validar" />
+            </label>
+            <label
+                >Cronômetro (jMarkWiFi)
+                <input id="cronometro" onkeypress="inserirMascara('cronometro', 'xx:xx:xx:xx')" type="text" value="02:05:47:89" />
+                <input onclick="validar('cronometro')" type="button" value="Validar" />
+            </label>
+        </form>
+    </body>
+    
+</html>
